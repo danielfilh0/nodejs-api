@@ -7,5 +7,6 @@ import { authenticate } from './authenticate'
 export async function userRoutes(app: FastifyInstance) {
   app.get('/users', listUsers)
   app.post('/users', createUser)
+  app.put('/users', createUser)
   app.post('/sessions', authenticate)
 }

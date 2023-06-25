@@ -3,8 +3,11 @@ import { env } from './env'
 import { ZodError } from 'zod'
 import { userRoutes } from './http/controllers/users/routes'
 import fastifyJwt from '@fastify/jwt'
+import fastifyMultipart from '@fastify/multipart'
 
 export const app = fastify()
+
+app.register(fastifyMultipart)
 
 app.register(fastifyJwt, {
   secret: env.JWT_SECRET

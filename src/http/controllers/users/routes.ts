@@ -9,8 +9,10 @@ import { deleteUser } from './delete-user'
 import { verifyUserRole } from '@/http/middlewares/verify-user-role'
 import { updateUserRole } from './update-user-role'
 import { updateUser } from './update-user'
+import { getUser } from './get-user'
 
 export async function userRoutes(app: FastifyInstance) {
+  app.get('/users/profile',{ onRequest: [verifyJWT] }, getUser, )
   app.get('/users',{ onRequest: [verifyUserRole('ADMIN')] }, listUsers, )
   app.post('/users', createUser)
   app.post('/sessions',  authenticate)
